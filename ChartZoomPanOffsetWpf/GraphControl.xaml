@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="ChartZoomPanOffsetWpf.GraphControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:chartZoomPanOffsetWpf="clr-namespace:ChartZoomPanOffsetWpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.DataContext>
+        <chartZoomPanOffsetWpf:GraphViewModel />
+    </UserControl.DataContext>
+    
+    <Grid>
+        <telerik:RadCartesianChart x:Name="RadChart1"
+                 Zoom="{Binding Zoom, Mode=TwoWay}" PanOffset="{Binding PanOffset, Mode=TwoWay}">
+
+            <telerik:RadCartesianChart.Behaviors>
+                <telerik:ChartPanAndZoomBehavior ZoomMode="Both" DragMode="Pan" PanMode="Both" />
+            </telerik:RadCartesianChart.Behaviors>
+
+            <telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:DateTimeContinuousAxis LabelFitMode="MultiLine" LabelFormat="dd/MM/yyyy" />
+            </telerik:RadCartesianChart.HorizontalAxis>
+            <telerik:RadCartesianChart.VerticalAxis>
+                <telerik:LinearAxis />
+            </telerik:RadCartesianChart.VerticalAxis>
+
+            <telerik:LineSeries CategoryBinding="Date" ValueBinding="Value" ItemsSource="{Binding Data}" />
+        </telerik:RadCartesianChart>
+    </Grid>
+</UserControl>

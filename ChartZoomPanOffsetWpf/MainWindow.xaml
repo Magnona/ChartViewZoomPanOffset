@@ -1,0 +1,21 @@
+﻿<Window x:Class="ChartZoomPanOffsetWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:chartZoomPanOffsetWpf="clr-namespace:ChartZoomPanOffsetWpf"
+        Title="MainWindow" WindowState="Maximized">
+    <Window.DataContext>
+        <chartZoomPanOffsetWpf:ViewModel />
+    </Window.DataContext>
+    <Grid>
+        <telerik:RadTabControl SelectionChanged="RadTabControlBase_OnSelectionChanged" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="0" Background="#FFDFE9F5">
+            <telerik:RadTabItem Header="Graph 1" Height="40" Width="80" Name="Tab1">
+                <ContentControl  Content="{Binding Graph1Control}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem Header="Graph 2" Name="Tab2">
+                <ContentControl Content="{Binding Graph2Control}"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" />
+            </telerik:RadTabItem>
+       </telerik:RadTabControl>
+    </Grid>
+</Window>
